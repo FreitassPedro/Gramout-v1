@@ -1,30 +1,26 @@
 package com.pedro.Gramout.entity;
 
+import com.pedro.Gramout.entity.enums.CategoriaPrato;
 import jakarta.persistence.*;
 import lombok.Data;
-
-import java.time.LocalDateTime;
 
 @Data
 @Entity
 @Table()
-public class Post {
+public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String URL;
+    private String name;
     private String description;
-    // Adicionar foto do post
-    private String photoUrl;
+    private Double price;
 
-    private LocalDateTime date;
+    @Enumerated(EnumType.STRING)
+    private CategoriaPrato categoriaPrato;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-
+    @ManyToOne
     @JoinColumn(name = "restaurante_id")
-    private Restaurante restaurante;
-
-
+    private Restaurante restaurante;;
 }

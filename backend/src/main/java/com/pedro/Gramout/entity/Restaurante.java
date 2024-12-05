@@ -20,11 +20,11 @@ public class Restaurante {
     private String address;
     private String phone;
 
-    private List<Cardapio> cardapioList;
+    @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Produto> produtos;
 
-
-
-
+    @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Post> posts;
 
 
 }
