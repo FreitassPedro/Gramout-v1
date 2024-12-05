@@ -2,12 +2,16 @@ package com.pedro.Gramout.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Data
+
 @Entity
+@NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
 @Table()
 public class Restaurante {
 
@@ -16,15 +20,20 @@ public class Restaurante {
     private Integer id;
 
     private String name;
-    private String profilePicture;
+    private String profilePictureUrl;
+    // Aprimorar o endereço p/ entidade especilizada no futuro
     private String address;
     private String phone;
 
     @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Produto> produtos;
+    private List<Produto> produtos = new ArrayList<>();
 
     @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Post> posts;
+    private List<Post> posts = new ArrayList<>();
+
+    public void addProduto(Produto produto) {
+        produtos.add(produto);
+    }
 
 
 }

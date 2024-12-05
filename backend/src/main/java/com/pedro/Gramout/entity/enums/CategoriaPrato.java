@@ -3,7 +3,7 @@ package com.pedro.Gramout.entity.enums;
 public enum CategoriaPrato {
 
     BEBIDA,
-    PRATO,
+    PRATO_PRINCIPAL,
     SOBREMESA,
     LANCHE,
     OUTROS;
