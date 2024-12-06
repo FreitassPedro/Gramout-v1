@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Table()
-public class Restaurante {
+public class Estabelecimento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,15 +25,16 @@ public class Restaurante {
     private String address;
     private String phone;
 
-    @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Produto> produtos = new ArrayList<>();
 
-    @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Post> posts = new ArrayList<>();
+    @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Post> posts;
 
     public void addProduto(Produto produto) {
         produtos.add(produto);
     }
 
+    // No futuro, associar ao Conta
 
 }

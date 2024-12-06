@@ -14,4 +14,6 @@ public class Conta {
     private Long id;
     private String email;
     private String senha;
+
+    // No futuro, aprimorar p/ entidade especializada
 }

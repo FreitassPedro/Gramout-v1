@@ -21,6 +21,6 @@ public class Produto {
     private CategoriaPrato categoriaPrato;
 
     @ManyToOne
-    @JoinColumn(name = "restaurante_id")
-    private Restaurante restaurante;;
+    @JoinColumn(name = "estabelecimento_id")
+    private Estabelecimento estabelecimento;;
 }
