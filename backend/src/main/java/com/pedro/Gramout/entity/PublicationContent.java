@@ -40,7 +40,7 @@ public class PublicationContent extends Content {
         this.medias = medias;
     }
 
-    public List<Media> getMidias() {
+    public List<Media> getMedias() {
         return medias == null ? Collections.emptyList() : medias;
     }
 }

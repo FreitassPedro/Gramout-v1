@@ -1,15 +1,16 @@
 package com.pedro.Gramout.controller;
 
-import com.pedro.Gramout.service.PostService;
+
+import com.pedro.Gramout.service.PublicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/post")
-public class PostController {
+public class PublicationController {
 
     @Autowired
-    private PostService postService;
+    private PublicationService publicationService;
 
 }

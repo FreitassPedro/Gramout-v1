@@ -22,7 +22,9 @@ public class Estabelecimento {
     private String profilePictureUrl;
     private String about;
     private float rating;
-    private String contact;
+
+    @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EventHappening> eventsHappening;
 
     @Enumerated(EnumType.STRING)
     private CategoriaEstabelecimento category;

@@ -3,10 +3,12 @@ package com.pedro.Gramout.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
 @Table()
+@EqualsAndHashCode(exclude = {"estabelecimento", "publicationContent"})
 public class Publication {
 
     @Id
