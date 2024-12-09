@@ -4,7 +4,7 @@ import com.pedro.Gramout.entity.Produto;
 import com.pedro.Gramout.entity.Estabelecimento;
 import com.pedro.Gramout.entity.enums.CategoriaPrato;
 import com.pedro.Gramout.repository.ProdutoRepository;
-import com.pedro.Gramout.repository.RestauranteRepository;
+import com.pedro.Gramout.repository.EstabelecimentoRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class EstabelecimentoRepositoryTest {
 
     @Autowired
-    private RestauranteRepository restauranteRepository;
+    private EstabelecimentoRepository estabelecimentoRepository;
 
     @Autowired
     private ProdutoRepository produtoRepository;
@@ -36,9 +36,9 @@ public class EstabelecimentoRepositoryTest {
         produtoRepository.save(produto1);
 
         estabelecimento1.addProduto(produto1);
-        restauranteRepository.save(estabelecimento1);
+        estabelecimentoRepository.save(estabelecimento1);
 
-        Estabelecimento estabelecimentoSalvo = restauranteRepository.findById(estabelecimento1.getId()).orElse(null);
+        Estabelecimento estabelecimentoSalvo = estabelecimentoRepository.findById(estabelecimento1.getId()).orElse(null);
 
         // Verifica se os produtos foram salvos corretamente
         Produto produtoSalvo1 = estabelecimentoSalvo.getProdutos().get(0);

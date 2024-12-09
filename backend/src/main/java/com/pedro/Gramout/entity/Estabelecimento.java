@@ -9,10 +9,8 @@ import java.util.List;
 
 
 @Entity
-@NoArgsConstructor @AllArgsConstructor
-@Getter
-@Setter
-@Table()
+@Data
+@Table(name = "estabelecimento")
 public class Estabelecimento {
 
     @Id
@@ -34,6 +32,8 @@ public class Estabelecimento {
     public void addProduto(Produto produto) {
         produtos.add(produto);
     }
+
+
 
     // No futuro, associar ao Conta
 
