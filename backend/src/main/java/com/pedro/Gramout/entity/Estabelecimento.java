@@ -1,6 +1,7 @@
 package com.pedro.Gramout.entity;
 
 
+import com.pedro.Gramout.entity.enums.CategoriaEstabelecimento;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,9 +20,16 @@ public class Estabelecimento {
 
     private String name;
     private String profilePictureUrl;
+    private String about;
+    private float rating;
+    private String contact;
+
+    @Enumerated(EnumType.STRING)
+    private CategoriaEstabelecimento category;
     // Aprimorar o endereço p/ entidade especilizada no futuro
     private String address;
     private String phone;
+
 
     @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Produto> produtos = new ArrayList<>();

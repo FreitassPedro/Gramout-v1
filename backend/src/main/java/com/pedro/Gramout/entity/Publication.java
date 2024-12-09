@@ -20,7 +20,6 @@ public class Publication {
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "publication_content_id")
-    @JsonIgnore
     private PublicationContent publicationContent;
 
 }
