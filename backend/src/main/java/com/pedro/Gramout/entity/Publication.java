@@ -1,12 +1,13 @@
 package com.pedro.Gramout.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
 @Entity
 @Table()
-public class Post {
+public class Publication {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,10 +15,12 @@ public class Post {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "estabelecimento_id", referencedColumnName = "id")
+    @JsonIgnore
     private Estabelecimento estabelecimento;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "post_content_id")
-    private PostContent postContent;
+    @JoinColumn(name = "publication_content_id")
+    @JsonIgnore
+    private PublicationContent publicationContent;
 
 }

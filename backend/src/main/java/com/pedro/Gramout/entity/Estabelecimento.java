@@ -27,13 +27,18 @@ public class Estabelecimento {
     private List<Produto> produtos = new ArrayList<>();
 
     @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Post> posts;
+    private List<Publication> publications = new ArrayList<>();
 
     public void addProduto(Produto produto) {
         produtos.add(produto);
     }
 
-
+    public void addPublication(Publication publication) {
+        if (publications == null) {
+            publications = new ArrayList<>();
+        }
+        publications.add(publication);
+    }
 
     // No futuro, associar ao Conta
 

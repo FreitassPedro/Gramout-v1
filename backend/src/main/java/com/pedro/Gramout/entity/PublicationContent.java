@@ -8,14 +8,14 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @Table
-public class PostContent {
+public class PublicationContent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "postContent")
-    private Post post;
+    @OneToOne(mappedBy = "publicationContent")
+    private Publication publication;
 
     private String text;
     private String imageUrl;

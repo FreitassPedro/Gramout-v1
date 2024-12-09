@@ -21,4 +21,8 @@ public class EstabelecimentoService {
     public SequencedCollection<Estabelecimento> findAll() {
         return estabelecimentoRepository.findAll();
     }
+
+    public Estabelecimento findById(int id) {
+        return estabelecimentoRepository.findById(id).orElse(null);
+    }
 }
