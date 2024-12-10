@@ -32,6 +32,7 @@ public class Estabelecimento {
     private String address;
     private String phone;
 
+    private List<Media> destaques;
 
     @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Produto> produtos = new ArrayList<>();

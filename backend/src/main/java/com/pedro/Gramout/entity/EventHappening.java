@@ -26,6 +26,8 @@ public class EventHappening {
     private LocalDateTime startDate;
     private LocalDateTime endDate;
 
+    private Integer interested;
+
    // Adicionar frequencia de repetição
     @Enumerated(EnumType.STRING)
     private EventFrequency eventFrequency;
