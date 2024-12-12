@@ -5,16 +5,14 @@ body {
 }
 
 .galeria-container {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 .img-big {
-  width: 50%;
+  width: 60%;
   display: flex;
   justify-content: center;
-
-    
 }
 
 .container-fluid {
@@ -44,8 +42,8 @@ body {
     display: flex;
     justify-content: center;
     img:hover {
-        cursor: pointer;
-        transform: scale(1.3);
+      cursor: pointer;
+      transform: scale(1.3);
     }
   }
 
@@ -55,3 +53,54 @@ body {
     object-fit: cover;
   }
 }
+
+.img-menu {
+  max-width: 90px;
+  max-height: 90px;
+}
+
+.hr-menu {
+  margin: 0;
+  border-top: 1px dashed red;
+}
+
+.menu-title {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  position: relative;
+  width: 100%;
+
+  h2, h3 {
+    margin: 0;
+  }
+
+  h2 {
+    padding: 0 0 0 6px;
+    font-size: 1.5rem;
+    color: #1d1d1d;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+
+  h3 {
+    color: #1d1d1d;
+    font-size: 1rem;
+  }
+  .dotted-line {
+    flex-grow: 1; /* Permite que a linha ocupe o espaço disponível */
+    border-bottom: 1px dotted #ccc; /* Cria a linha pontilhada */
+    margin: 0 5px; /* Adiciona margens laterais para espaçamento */
+    margin-bottom: 0px;
+    margin-top: 30px;
+  }
+}
+
+.menu-info span {
+  font-size: 1rem;
+  margin-top: 10px;
+  color: #575757;
+}
+
+
+
+

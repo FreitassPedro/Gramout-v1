@@ -1,4 +1,5 @@
 import Fotografias from "./fotografias";
+import Menu from "./menu";
 import Sobre from "./sobre";
 import "./styles.css";
 const Estabelecimento = () => {
@@ -8,6 +9,7 @@ const Estabelecimento = () => {
 
       <Fotografias />
       <Sobre />
+      <Menu /> 
     </>
   );
 };
