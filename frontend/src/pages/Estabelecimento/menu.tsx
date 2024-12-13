@@ -2,12 +2,12 @@ import React from "react";
 import "./styles.css";
 const Menu: React.FC = () => {
   return (
-    <div>
+    <section id="menu" className="menu">
       <h1>Menu</h1>
-      <section id="menu">
+      <section id="menu" className="menu-container">
         <div className="row g-3">
         <div className="col-6">
-            <div className="d-flex">
+            <div className="d-flex menu-card">
               <img
                 src="src/assets/photosExample/food-1.jpg"
                 className="img-fluid img-menu"
@@ -27,7 +27,7 @@ const Menu: React.FC = () => {
             </div>
           </div>
           <div className="col-6">
-            <div className="d-flex">
+            <div className="d-flex menu-card">
               <img
                 src="src/assets/photosExample/food-1.jpg"
                 className="img-fluid img-menu"
@@ -47,7 +47,7 @@ const Menu: React.FC = () => {
             </div>
           </div>
           <div className="col-6">
-            <div className="d-flex">
+            <div className="d-flex menu-card">
               <img
                 src="src/assets/photosExample/food-1.jpg"
                 className="img-fluid img-menu"
@@ -67,7 +67,7 @@ const Menu: React.FC = () => {
             </div>
           </div>
           <div className="col-6">
-            <div className="d-flex">
+            <div className="d-flex menu-card">
               <img
                 src="src/assets/photosExample/food-1.jpg"
                 className="img-fluid img-menu"
@@ -87,7 +87,7 @@ const Menu: React.FC = () => {
             </div>
           </div>
           <div className="col-6">
-            <div className="d-flex">
+            <div className="d-flex menu-card">
               <img
                 src="src/assets/photosExample/food-1.jpg"
                 className="img-fluid img-menu"
@@ -106,8 +106,8 @@ const Menu: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="col-6">
-            <div className="d-flex">
+          <div className="col-6"> 
+            <div className="d-flex menu-card">
               <img
                 src="src/assets/photosExample/food-1.jpg"
                 className="img-fluid img-menu"
@@ -120,14 +120,13 @@ const Menu: React.FC = () => {
                   <h3>R$100</h3>
                 </div>
                 <span>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                  voluptatum quos, explicabo consequatur
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste assumenda dolorum corrupti expedita fugit! Eaque veritatis animi aperiam quibusdam alias, reprehenderit debitis porro rerum quaerat. Labore dolorem voluptas libero suscipit.
                 </span>
               </div>
             </div>
           </div>
           <div className="col-6">
-            <div className="d-flex">
+            <div className="d-flex menu-card">
               <img
                 src="src/assets/photosExample/food-1.jpg"
                 className="img-fluid img-menu"
@@ -140,14 +139,13 @@ const Menu: React.FC = () => {
                   <h3>R$100</h3>
                 </div>
                 <span>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                  voluptatum quos, explicabo consequatur
+                  lore ipsum dolor sit amet consectetur adipisicing elit. 
                 </span>
               </div>
             </div>
           </div>
           <div className="col-6">
-            <div className="d-flex">
+            <div className="d-flex menu-card">
               <img
                 src="src/assets/photosExample/food-1.jpg"
                 className="img-fluid img-menu"
@@ -161,14 +159,14 @@ const Menu: React.FC = () => {
                 </div>
                 <span>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                  voluptatum quos, explicabo consequatur
+                  voluptatum quos, explicabo consequatur explicabo consequatur
                 </span>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </div>
+    </section>
   );
 };
 

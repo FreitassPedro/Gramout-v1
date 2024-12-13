@@ -1,15 +1,26 @@
-import Fotografias from "./fotografias";
+import Galeria from "./galeria";
 import Menu from "./menu";
-import Sobre from "./sobre";
+import Perfil from "./perfil";
+
 import "./styles.css";
+
 const Estabelecimento = () => {
   return (
     <>
-      <h1>Estabelecimento</h1>
-
-      <Fotografias />
-      <Sobre />
-      <Menu /> 
+      <div className="main-content">
+        <header>
+          <nav>
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <Perfil />
+        <Galeria />
+        <Menu />
+      </div>
     </>
   );
 };
