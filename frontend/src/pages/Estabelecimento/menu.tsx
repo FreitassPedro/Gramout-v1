@@ -120,30 +120,12 @@ const Menu: React.FC = () => {
                   <h3>R$100</h3>
                 </div>
                 <span>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste assumenda dolorum corrupti expedita fugit! Eaque veritatis animi aperiam quibusdam alias, reprehenderit debitis porro rerum quaerat. Labore dolorem voluptas libero suscipit.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste assumenda dolorum corrupti expedita fugit! Eaque veritatis animi aperiam quibusdam alias, reprehenderit debitis porro rerum quaerat. 
                 </span>
               </div>
             </div>
           </div>
-          <div className="col-6">
-            <div className="d-flex menu-card">
-              <img
-                src="src/assets/photosExample/food-1.jpg"
-                className="img-fluid img-menu"
-                alt=""
-              />
-              <div className="menu-info">
-                <div className="menu-title">
-                  <h2>Lorem ipsum dolor sit amet</h2>
-                  <span className="dotted-line"></span>
-                  <h3>R$100</h3>
-                </div>
-                <span>
-                  lore ipsum dolor sit amet consectetur adipisicing elit. 
-                </span>
-              </div>
-            </div>
-          </div>
+          
           <div className="col-6">
             <div className="d-flex menu-card">
               <img

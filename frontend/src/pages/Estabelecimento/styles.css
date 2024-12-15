@@ -1,13 +1,3 @@
-.main-content {
-  background-color: #1a1c22;
-  justify-content: center;
-  align-items: center;
-  display: flex; /* remomover acso continue bugando */
-
-  flex-direction: column;
-}
-
-
 .galeria {
   display: flex;
   justify-content: center;
@@ -73,6 +63,7 @@
   flex-direction: column;
 
   .menu-container {
+    width: 1100px;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -81,8 +72,6 @@
 }
 
 .menu-card {
-  margin: 10px 0 10px 0;
-  padding-left: 50px;
   max-width: 600px;
 }
 
@@ -138,11 +127,16 @@
   background: #17191f;
   color: #fff ;
   height: 400px;
+  max-width: 100%;
+  width: 100%;
+
 
   .logo-icon {
     border-radius: 50%;
     max-width: 200px;
     max-height: 200px;
+    margin: 40px;
+    padding-bottom: 0px;
     
     img {
       width: 100%;
@@ -151,6 +145,49 @@
       border-radius: 50%;
     }
   }
-  
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    padding-left: 0px;
+    margin-left: 0px;
+    
+
+    width: 100%;
+    align-items: flex-end;
+
+  }
+  .tabs-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    color: #e7e7e7;
+    margin: 0px 10px;
+    gap: 15px;
+    align-items: flex-end;
+    li {
+      display: inline;
+    }
+    a {
+      text-decoration: none;
+      color: #d3d3d3;
+      font-size: 1.2rem;
+    }
+
+    a:hover {
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.perfil-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+
+  padding-bottom: 0px;
 }
 

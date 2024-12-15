@@ -1,7 +1,12 @@
 #root {
   padding: 0;
-  margin: 0 ;
+  margin: 0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #131416;
 }
 
 .logo {
@@ -10,9 +15,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -26,16 +33,15 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
+.main-content {
+  background-color: #1a1c22;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Define a largura máxima */
+  margin: 0 auto; /* Centraliza o conteúdo */
+  position: relative;
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

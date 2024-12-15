@@ -18,7 +18,9 @@ const Estabelecimento = () => {
           </nav>
         </header>
         <Perfil />
+        <br />
         <Galeria />
+        <br />
         <Menu />
       </div>
     </>
