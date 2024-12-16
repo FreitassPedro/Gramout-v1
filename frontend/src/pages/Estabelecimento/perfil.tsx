@@ -7,11 +7,15 @@ const Perfil: React.FC = () => {
     <section id="perfil-estabelecimento" className="perfil-estabelecimento">
       <h1>Perfil do Estabelecimento</h1>
       <div className="perfil-content">
-        <div className="logo-icon">
+        <div className="brand-logo">
           <img src="/src/assets/photosExample/logo-icon.jpg" alt="icon" />
         </div>
-        <div className="tabs">
-          <ul className="tabs-list">
+
+        <div className="name">
+          <h1>Bistro Bar</h1>
+        </div>
+        <div className="profile-tabs ">
+          <ul className="tab-list">
             <li>
               <a href="#">Sobre</a>
             </li>
@@ -28,9 +32,6 @@ const Perfil: React.FC = () => {
               <a href="#">Contato</a>
             </li>
           </ul>
-        </div>
-        <div>
-          <button>Search</button>
         </div>
       </div>
     </section>

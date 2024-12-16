@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
 .galeria {
   display: flex;
   justify-content: center;
@@ -67,7 +68,6 @@
     align-items: center;
     justify-content: center;
     display: flex;
-    
   }
 }
 
@@ -82,7 +82,6 @@
   max-height: 80px;
 }
 
-
 .menu-title {
   align-items: center;
   justify-content: space-between;
@@ -90,7 +89,8 @@
   position: relative;
   width: 100%;
 
-  h2, h3 {
+  h2,
+  h3 {
     margin: 0;
   }
 
@@ -98,14 +98,15 @@
     padding: 0 0 0 6px;
     font-size: 1.3rem;
     color: #e7e7e7;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
   }
 
   h3 {
     color: #cacaca;
     font-size: 1rem;
   }
-  
+
   .dotted-line {
     flex-grow: 1; /* Permite que a linha ocupe o espaço disponível */
     border-bottom: 1px dotted #ccc; /* Cria a linha pontilhada */
@@ -122,72 +123,80 @@
   margin-left: 10px;
 }
 
-
 .perfil-estabelecimento {
   background: #17191f;
-  color: #fff ;
+  color: #fff;
   height: 400px;
   max-width: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+}
 
-
-  .logo-icon {
-    border-radius: 50%;
-    max-width: 200px;
-    max-height: 200px;
-    margin: 40px;
-    padding-bottom: 0px;
-    
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-  }
-
-  .tabs {
-    display: flex;
-    justify-content: center;
-    padding-left: 0px;
-    margin-left: 0px;
-    
-
-    width: 100%;
-    align-items: flex-end;
-
-  }
-  .tabs-list {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    color: #e7e7e7;
-    margin: 0px 10px;
-    gap: 15px;
-    align-items: flex-end;
-    li {
-      display: inline;
-    }
-    a {
-      text-decoration: none;
-      color: #d3d3d3;
-      font-size: 1.2rem;
-    }
-
-    a:hover {
-      color: #fff;
-      cursor: pointer;
-      font-size: 1.3rem;
-    }
-  }
+.perfil-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .perfil-content {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column; /* Alinha os itens em coluna */
+  justify-content: flex-end;
+  align-items: center; /* Centraliza os itens horizontalmente */
   width: 100%;
+  margin-top: 20px;
+}
 
+.brand-logo {
+  border-radius: 50%;
+  max-width: 200px;
+  max-height: 200px;
+  margin: 40px;
   padding-bottom: 0px;
 }
 
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.name {
+  margin-bottom: 20px; /* Adiciona espaço entre o nome e as abas */
+}
+
+.profile-tabs {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between; /* Distribui os itens uniformemente */
+  width: 80%; /* Garante que a lista ocupe toda a largura da div */
+}
+
+.tab-list li {
+  display: inline;
+}
+
+.tab-list a {
+  text-decoration: none;
+  color: #c0c0c0;
+  font-family: "Fjalla One", sans-serif;
+}
+
+.tab-list a:hover {
+  color: #fff;
+}
