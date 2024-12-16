@@ -1,4 +1,5 @@
 import Galeria from "./galeria";
+import Happening from "./happening";
 import Menu from "./menu";
 import Perfil from "./perfil";
 
@@ -10,6 +11,8 @@ const Estabelecimento = () => {
     <>
       <div className="main-content">
         <Perfil />
+        <br />
+        <Happening />
         <br />
         <Galeria />
         <br />
