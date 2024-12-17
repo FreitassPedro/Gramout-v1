@@ -201,13 +201,11 @@
   color: #fff;
 }
 
-
 .event-announcement {
   background-color: #866300;
   align-items: flex-start;
   display: flex;
   justify-content: space-between;
-
 
   width: 500px;
   h1 {
@@ -224,39 +222,76 @@
   }
 }
 
-
 .event-cards-container {
-  display: flex;                /* Arrange cards horizontally */
-  flex-wrap: wrap;             /* Allow cards to wrap to next line if needed */
-  justify-content: center;     /* Center the cards */
-  gap: 20px;                   /* Spacing between cards */
+  display: flex; 
+  flex-wrap: wrap; /* Allow cards to wrap to next line if needed */
+  justify-content: center; 
+  gap: 20px;
 }
 
 .event-card {
-  border: 1px solid #747474;       /* Add a border */
-  border-radius: 8px;          /* Rounded corners */
-  overflow: hidden;             /* Prevent image overflow */
-  width: 300px;                /* Set a width for the cards */  /* Adjust as needed */
+  border: 1px solid #747474;
+  border-radius: 8px; 
+  overflow: hidden; /* Prevent image overflow */
+  width: 300px;
+  position: relative;
 }
 
 .event-image {
   width: 100%;
-  height: 150px;              /* Set a fixed height for the images */
-  object-fit: cover;          /* Ensure images cover the area without distortion */
+  height: 150px; /* Set a fixed height for the images */
+  object-fit: cover; /* Ensure images cover the area without distortion */
 }
 
 .event-details {
-  padding: 10px;              /* Add some padding around the text */
-  position: abo
+  padding: 10px; /* Add some padding around the text */
+  position: abo;
 }
 
 .event-details h3 {
   color: #866300;
-    margin-top: 0;             /* Remove default top margin */
+  margin-top: 0; /* Remove default top margin */
 }
 .event-details {
   color: #ccc;
 }
 .gradient {
   mask-image: linear-gradient(black, transparent);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(186,122,0);
+  background: linear-gradient(0deg, rgba(186,122,0,1) 20%, rgba(255,255,255,0) 93%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.event-card:hover .overlay {
+  opacity: 1;
+}
+
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  height: 100%;
+  font-size: 20px;
+}
+
+.overlay-time {
+  margin-top: auto;
+  padding: 10px;
+}
+
+.overlay-content h2 {
+  padding: 10px;
+  margin-top: auto;
 }

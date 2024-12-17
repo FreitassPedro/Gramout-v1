@@ -17,6 +17,7 @@ const Estabelecimento = () => {
         <Galeria />
         <br />
         <Menu />
+        <br />
       </div>
     </>
   );

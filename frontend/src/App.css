@@ -43,5 +43,8 @@
   max-width: 1200px; /* Define a largura máxima */
   margin: 0 auto; /* Centraliza o conteúdo */
   position: relative;
+  margin-bottom: 100px;
+  gap: 20px;
+  
 
 }

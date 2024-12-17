@@ -20,6 +20,9 @@ const Perfil: React.FC = () => {
               <a href="#">Sobre</a>
             </li>
             <li>
+              <a href="#happening">Eventos</a>
+            </li>
+            <li>
               <a href="#menu">Posts</a>
             </li>
             <li>
