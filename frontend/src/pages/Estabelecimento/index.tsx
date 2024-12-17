@@ -2,6 +2,8 @@ import Galeria from "./galeria";
 import Happening from "./happening";
 import Menu from "./menu";
 import Perfil from "./perfil";
+import Filtros from "./filtros";
+import Avaliacoes from "./avaliacoes";
 
 import "./styles.css";
 
@@ -18,6 +20,9 @@ const Estabelecimento = () => {
         <br />
         <Menu />
         <br />
+        <Avaliacoes />
+        <br />
+        <Filtros />
       </div>
     </>
   );

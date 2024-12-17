@@ -14,19 +14,19 @@ const Happening: React.FC = () => {
       <div className="event-cards-container">
         <div className="event-card">
           <img
-            src="src/assets/photosExample/event-1.jpg"
+            src="src/assets/photosExample/event-2.jpg"
             alt="Event 1"
             className="event-image gradient"
           />
           <div className="event-details">
-            <h3>Event Title 1</h3>
-            <p>Short description of event 1. This can be a few lines long.</p>
+            <h3>CHOPP EM DOBRO</h3>
+            <p>Na compra de 3 CHOPPS 500ml, ganhe outros 2 CHOPPS 500ml para dividir com os amigos!</p>
           </div>
           <div className="overlay">
             <div className="overlay-content">
               <div className="overlay-time">
                 <h3> Encerra em: </h3>
-                <FontAwesomeIcon icon={faCalendar} /> {<span>99/99/1999</span>}
+                <FontAwesomeIcon icon={faCalendar} /> {<span>01/01/2031</span>}
               </div>
               <h2>Aproveite!</h2>
             </div>
@@ -34,7 +34,7 @@ const Happening: React.FC = () => {
         </div>
         <div className="event-card">
           <img
-            src="src/assets/photosExample/event-2.jpg"
+            src="src/assets/photosExample/event-1.jpg"
             alt="Event 2"
             className="event-image gradient"
           />
@@ -63,8 +63,8 @@ const Happening: React.FC = () => {
             className="event-image gradient"
           />
           <div className="event-details">
-            <h3>Event Title 1</h3>
-            <p>Short description of event 1. This can be a few lines long.</p>
+            <h3>GRENAL AO VIVO</h3>
+            <p>Estaremos transmitindo a partida de futebol entre Grêmio e Internacional</p>
           </div>
           <div className="overlay">
             <div className="overlay-content">

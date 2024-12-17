@@ -135,14 +135,6 @@
   padding: 20px;
 }
 
-.perfil-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-}
-
 .perfil-content {
   display: flex;
   flex-direction: column; /* Alinha os itens em coluna */
@@ -152,11 +144,33 @@
   margin-top: 20px;
 }
 
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-basics {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  padding-left: 50px;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  
+}
+
 .brand-logo {
   border-radius: 50%;
   max-width: 200px;
   max-height: 200px;
-  margin: 40px;
   padding-bottom: 0px;
 }
 
@@ -164,10 +178,10 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 30%;
 }
 
-.name {
+.brand-name {
   margin-bottom: 20px; /* Adiciona espaço entre o nome e as abas */
 }
 
@@ -223,15 +237,15 @@
 }
 
 .event-cards-container {
-  display: flex; 
+  display: flex;
   flex-wrap: wrap; /* Allow cards to wrap to next line if needed */
-  justify-content: center; 
+  justify-content: center;
   gap: 20px;
 }
 
 .event-card {
   border: 1px solid #747474;
-  border-radius: 8px; 
+  border-radius: 8px;
   overflow: hidden; /* Prevent image overflow */
   width: 300px;
   position: relative;
@@ -244,6 +258,10 @@
 }
 
 .event-details {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
   padding: 10px; /* Add some padding around the text */
   position: abo;
 }
@@ -251,6 +269,9 @@
 .event-details h3 {
   color: #866300;
   margin-top: 0; /* Remove default top margin */
+}
+.event-details p {
+  width: 90%;
 }
 .event-details {
   color: #ccc;
@@ -265,8 +286,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgb(186,122,0);
-  background: linear-gradient(0deg, rgba(186,122,0,1) 20%, rgba(255,255,255,0) 93%);
+  background: rgb(186, 122, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(186, 122, 0, 1) 20%,
+    rgba(255, 255, 255, 0) 93%
+  );
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -294,4 +319,16 @@
 .overlay-content h2 {
   padding: 10px;
   margin-top: auto;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tag-card {
+  background-color: #866300;
+  border-radius: 20px;
+  color: #fff;
+  padding: 5px 10px;
+  margin: 5px;
 }
