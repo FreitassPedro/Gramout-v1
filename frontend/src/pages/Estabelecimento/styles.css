@@ -164,7 +164,6 @@
 .profile-details {
   display: flex;
   flex-direction: column;
-  
 }
 
 .brand-logo {
@@ -331,4 +330,60 @@
   color: #fff;
   padding: 5px 10px;
   margin: 5px;
+}
+
+
+/* Estilos para a página de avaliações */
+.avaliacoes {
+  width: 90%;
+  justify-content: center;
+  display: flex;
+}
+.rate-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  align-items:flex-start;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rate-card {
+  width: 720px;
+  height: auto;
+  background-color: #17191f;
+  border-radius: 0%;
+  border: 1px solid #747474;
+  padding: 20px;
+  
+}
+.rate-user-basics {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  gap: 15px;
+
+}
+.rate-user-icon {
+  border-radius: 50%;
+  max-width: 50px;
+  max-height: 50px;
+
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.user-rating {
+  display: flex;
+  gap: 15px;
+}
+
+.rate-description {
+  width: 100%;
+  text-align: left;
 }
