@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract  class Media {
 
     @Id
@@ -15,6 +16,8 @@ public abstract  class Media {
     private Long id;
 
     private String url;
+
+    @Enumerated(EnumType.STRING)
     private MediaType mediaType;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -15,5 +15,10 @@ public class Conta {
     private String email;
     private String senha;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private Usuario usuario;
+
+
     // No futuro, aprimorar p/ entidade especializada
 }

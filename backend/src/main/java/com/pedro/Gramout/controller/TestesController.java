@@ -44,6 +44,7 @@ public class TestesController {
         estabelecimento.setAbout("Fundada em 2000, servimos comidas e bebidas deliciosas");
         estabelecimento.setCategory(CategoriaEstabelecimento.RESTAURANTE);
 
+        estabelecimento.setFiltros(null);
         estabelecimentoService.save(estabelecimento);
 
         crairPostTeste();

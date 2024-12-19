@@ -2,6 +2,7 @@ package com.pedro.Gramout.entity;
 
 
 import com.pedro.Gramout.entity.enums.CategoriaEstabelecimento;
+import com.pedro.Gramout.entity.enums.FiltrosEstabelecimento;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,24 +22,30 @@ public class Estabelecimento {
     private String name;
     private String profilePictureUrl;
     private String about;
-    private float rating;
+    private float rating = 0;
 
     @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EventHappening> eventsHappening;
 
     @Enumerated(EnumType.STRING)
     private CategoriaEstabelecimento category;
+
     // Aprimorar o endereço p/ entidade especilizada no futuro
     private String address;
     private String phone;
 
-    private List<Media> destaques;
+    @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Galeria> galerias = new ArrayList<>();
 
     @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Produto> produtos = new ArrayList<>();
 
     @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Publication> publications = new ArrayList<>();
+
+    @Enumerated(EnumType.STRING)
+    @ElementCollection
+    private List<FiltrosEstabelecimento> filtros;
 
     public void addProduto(Produto produto) {
         produtos.add(produto);
@@ -52,5 +59,8 @@ public class Estabelecimento {
     }
 
     // No futuro, associar ao Conta
+    private void updateRating(int totalReviews, int newAvaliation) {
+        // Achar forma eficiente de atualizar a média
+    }
 
 }
