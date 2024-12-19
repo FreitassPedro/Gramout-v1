@@ -33,7 +33,7 @@
   }
 }
 
-.main-content {
+.main-estabelecimento-page {
   background-color: #1a1c22;
   display: flex;
   flex-direction: column;
@@ -46,5 +46,12 @@
   margin-bottom: 100px;
   gap: 20px;
   color: #ccc;
+}
+
+.main-estabalecimentos-page {
+  background-color: #202f5f;
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
 
 }

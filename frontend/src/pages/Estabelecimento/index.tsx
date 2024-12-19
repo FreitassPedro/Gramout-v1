@@ -11,7 +11,7 @@ import "./styles.css";
 const Estabelecimento = () => {
   return (
     <>
-      <div className="main-content">
+      <div className="main-estabelecimento-page">
         <Perfil />
         <br />
         <Happening />
