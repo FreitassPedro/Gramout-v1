@@ -25,4 +25,8 @@ public class EstabelecimentoService {
     public Estabelecimento findById(int id) {
         return estabelecimentoRepository.findById(id).orElse(null);
     }
+
+    public void update(Estabelecimento estabelecimento) {
+        estabelecimentoRepository.saveAndFlush(estabelecimento);
+    }
 }

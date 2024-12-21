@@ -1,20 +1,19 @@
 package com.pedro.Gramout.controller;
 
-import com.pedro.Gramout.entity.Estabelecimento;
-import com.pedro.Gramout.entity.EventHappening;
-import com.pedro.Gramout.entity.Publication;
-import com.pedro.Gramout.entity.PublicationContent;
+import com.pedro.Gramout.entity.*;
 import com.pedro.Gramout.entity.enums.CategoriaEstabelecimento;
 import com.pedro.Gramout.entity.enums.EventFrequency;
-import com.pedro.Gramout.repository.EventHappeningRepository;
-import com.pedro.Gramout.repository.PublicationContentRepository;
-import com.pedro.Gramout.repository.PublicationRepository;
+import com.pedro.Gramout.entity.enums.FiltrosEstabelecimento;
+import com.pedro.Gramout.repository.*;
 import com.pedro.Gramout.service.EstabelecimentoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -25,6 +24,9 @@ public class TestesController {
     private EstabelecimentoService estabelecimentoService;
 
     @Autowired
+    private EstabelecimentoRepository estabelecimentoRepository;
+
+    @Autowired
     private PublicationRepository publicationRepository;
 
     @Autowired
@@ -33,6 +35,8 @@ public class TestesController {
     @Autowired
     private EventHappeningRepository eventHappeningRepository;
 
+    @Autowired
+    private GaleriaRepository galeriaRepository;
     @GetMapping("/criar")
     public void create() {
 
@@ -43,12 +47,15 @@ public class TestesController {
         estabelecimento.setProfilePictureUrl("https://example.com/profile.jpg");
         estabelecimento.setAbout("Fundada em 2000, servimos comidas e bebidas deliciosas");
         estabelecimento.setCategory(CategoriaEstabelecimento.RESTAURANTE);
+        estabelecimento.setRating(5);
 
-        estabelecimento.setFiltros(null);
+        List<FiltrosEstabelecimento> filtros = List.of(FiltrosEstabelecimento.BRASILEIRA, FiltrosEstabelecimento.VEGANA);
+        estabelecimento.setFiltros(filtros);
         estabelecimentoService.save(estabelecimento);
 
         crairPostTeste();
         criarPostTeste2();
+        criarGaleria();
     }
 
     public void crairPostTeste() {
@@ -108,5 +115,28 @@ public class TestesController {
         eventHappening.setEndDate(java.time.LocalDateTime.now().plusHours(3));
         eventHappening.setEventFrequency(EventFrequency.NOT_REPEAT);
         eventHappeningRepository.save(eventHappening);
+    }
+
+    public void criarGaleria() {
+        Estabelecimento estabelecimento = estabelecimentoService.findById(1);
+
+        Galeria galeria = new Galeria();
+        galeria.setEstabelecimento(estabelecimento);
+        Image imagem1 = new Image();
+        imagem1.setUrl("https://example.com/image1.jpg");
+        Image imagem2 = new Image();
+        imagem2.setUrl("https://example.com/image2.jpg");
+        List<Media> imagensGaleria = List.of(imagem1, imagem2);
+        galeria.setImages(imagensGaleria);
+
+        galeriaRepository.save(galeria);
+        estabelecimentoRepository.saveAndFlush(estabelecimento);
+
+    }
+
+    @GetMapping("/mostrar")
+    public ResponseEntity<?> mostrarEstabalecimento() {
+        Estabelecimento estabelecimento = estabelecimentoService.findById(1);
+        return ResponseEntity.ok(estabelecimento);
     }
 }

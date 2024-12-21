@@ -8,8 +8,9 @@ import lombok.Data;
 @Data
 @Entity
 @Table
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract  class Media {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // This is the strategy that will be used to store the data in the database
+@DiscriminatorColumn(name = "media_type") // This is the column that will be used to determine the type of the media
+public  class Media {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,9 +19,7 @@ public abstract  class Media {
     private String url;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "media_type", insertable = false, updatable = false)
     private MediaType mediaType;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "content_id")
-    private Content content;
 }

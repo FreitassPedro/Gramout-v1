@@ -7,8 +7,7 @@ import lombok.EqualsAndHashCode;
 
 
 @Data
-@Table
+@DiscriminatorValue("image")
 public class Image extends Media {
     private MediaType mediaType = MediaType.IMAGE;
-
 }

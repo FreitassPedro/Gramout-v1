@@ -1,10 +1,11 @@
 package com.pedro.Gramout.entity;
 
 import com.pedro.Gramout.entity.enums.MediaType;
+import jakarta.persistence.DiscriminatorValue;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode(callSuper = true)
+
+@DiscriminatorValue("video")
 @Data
 public class Video extends  Media{
 

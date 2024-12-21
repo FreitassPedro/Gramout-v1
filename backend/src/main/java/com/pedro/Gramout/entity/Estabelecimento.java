@@ -34,8 +34,8 @@ public class Estabelecimento {
     private String address;
     private String phone;
 
-    @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Galeria> galerias = new ArrayList<>();
+    @OneToOne(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Galeria galeria;
 
     @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Produto> produtos = new ArrayList<>();
@@ -43,9 +43,11 @@ public class Estabelecimento {
     @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Publication> publications = new ArrayList<>();
 
-    @Enumerated(EnumType.STRING)
     @ElementCollection
-    private List<FiltrosEstabelecimento> filtros;
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "estabelecimento_filtros", joinColumns = @JoinColumn(name = "estabelecimento_id"))
+    @Column(name = "filtros") // Nome da coluna na tabela estabelecimento_filtros
+    private List<FiltrosEstabelecimento> filtros = new ArrayList<>();
 
     public void addProduto(Produto produto) {
         produtos.add(produto);
@@ -62,5 +64,6 @@ public class Estabelecimento {
     private void updateRating(int totalReviews, int newAvaliation) {
         // Achar forma eficiente de atualizar a média
     }
+
 
 }

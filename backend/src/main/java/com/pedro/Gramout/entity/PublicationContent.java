@@ -24,11 +24,15 @@ public class PublicationContent extends Content {
 
     private String text;
 
-    @OneToMany(mappedBy = "content", cascade = CascadeType.ALL, orphanRemoval = true)
+    /*
+     @OneToMany(mappedBy = "content", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Media> medias;
+
+     */
 
     private Boolean isEdited = false;
 
+    /*
     public void setImages(List<Media> medias) {
         // Inicilizar imagens caso vazia ou nao existir
         if (medias == null || medias.isEmpty()) {
@@ -40,7 +44,11 @@ public class PublicationContent extends Content {
         this.medias = medias;
     }
 
+
+
     public List<Media> getMedias() {
         return medias == null ? Collections.emptyList() : medias;
     }
+         */
+
 }
