@@ -1,5 +1,6 @@
 package com.pedro.Gramout.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,10 +21,12 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "estabelecimento_id")
+    @JsonIgnore
     private Estabelecimento estabelecimentoId;
 
     private int rating;
-    private String review;
+    private String title;
+    private String description;
     private LocalDateTime reviewDate = LocalDateTime.now();
 
 }

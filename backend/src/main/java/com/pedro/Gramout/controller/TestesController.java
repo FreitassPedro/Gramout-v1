@@ -4,7 +4,6 @@ import com.pedro.Gramout.entity.*;
 import com.pedro.Gramout.entity.enums.CategoriaEstabelecimento;
 import com.pedro.Gramout.entity.enums.EventFrequency;
 import com.pedro.Gramout.entity.enums.FiltrosEstabelecimento;
-import com.pedro.Gramout.entity.enums.MediaType;
 import com.pedro.Gramout.repository.*;
 import com.pedro.Gramout.service.EstabelecimentoService;
 import lombok.extern.slf4j.Slf4j;
@@ -40,6 +39,12 @@ public class TestesController {
     @Autowired
     private MediaRepository mediaRepository;
 
+    @Autowired
+    private ReviewRepository reviewRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     @GetMapping("/criar")
     public void create() {
 
@@ -50,18 +55,16 @@ public class TestesController {
         estabelecimento.setProfilePictureUrl("https://example.com/profile.jpg");
         estabelecimento.setAbout("Fundada em 2000, servimos comidas e bebidas deliciosas");
         estabelecimento.setCategory(CategoriaEstabelecimento.RESTAURANTE);
-        estabelecimento.setRating(5);
-
 
         List<FiltrosEstabelecimento> filtros = List.of(FiltrosEstabelecimento.BRASILEIRA, FiltrosEstabelecimento.VEGANA);
         estabelecimento.setFiltros(filtros);
         estabelecimentoService.save(estabelecimento);
 
-        crairPostTeste();
+        criarPostPorTeste1();
         criarPostTeste2();
     }
 
-    public void crairPostTeste() {
+    public void criarPostPorTeste1() {
         // Crie a entidade Publication
         Publication publication = new Publication();
         Estabelecimento estabelecimento = estabelecimentoService.findById(1);
@@ -138,4 +141,62 @@ public class TestesController {
         }
         return ResponseEntity.ok(galleryMedias);
     }
+
+    @GetMapping("/avaliacao")
+    public ResponseEntity<?> criarAvaliacao() {
+        Estabelecimento estabelecimento = estabelecimentoService.findById(1);
+        Review review1 = new Review();
+        review1.setEstabelecimentoId(estabelecimento);
+        review1.setRating(5);
+        review1.setTitle("Excelente");
+        review1.setDescription("Comida maravilhosa, atendimento excelente");
+
+        criarUsuario1();
+        Usuario usuario = usuarioRepository.findById(1).get();
+        review1.setUserId(usuario);
+        review1.setEstabelecimentoId(estabelecimento);
+
+        Review review2 = new Review();
+        review2.setEstabelecimentoId(estabelecimento);
+        review2.setRating(4);
+        review2.setTitle("Muito bom");
+        review2.setDescription("Comida boa, atendimento bom");
+        review2.setUserId(usuario);
+
+        Review review3 = new Review();
+        review3.setEstabelecimentoId(estabelecimento);
+        review3.setRating(2);
+        review3.setTitle("Ruim");
+        review3.setDescription("Comida ruim, atendimento ruim");
+        review3.setUserId(usuario);
+
+        reviewRepository.save(review1);
+        reviewRepository.save(review2);
+        reviewRepository.save(review3);
+
+        updateEstabalecimentoRating();
+        return ResponseEntity.ok(review1);
+    }
+
+    private void updateEstabalecimentoRating() {
+        Estabelecimento estabelecimento = estabelecimentoService.findById(1);
+
+        float rating = reviewRepository.findRatingByEstabalecimentoId(1);
+        estabelecimento.setRating(rating);
+        estabelecimentoRepository.save(estabelecimento);
+    }
+
+    private Usuario criarUsuario1() {
+        Usuario usuario = new Usuario();
+
+        usuario.setUsername("JohnDoe1234");
+        usuario.setFirstName("John");
+        usuario.setLastName("Doe");
+        usuario.setProfilePicture("https://example.com/profile.jpg");
+        usuario.setBio("I'm a software developer");
+
+        usuarioRepository.save(usuario);
+        return usuario;
+    }
+
 }

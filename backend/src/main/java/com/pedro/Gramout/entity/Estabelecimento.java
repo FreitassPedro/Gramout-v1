@@ -66,7 +66,7 @@ public class Estabelecimento {
     }
 
     // No futuro, associar ao Conta
-    private void updateRating(int totalReviews, int newAvaliation) {
+    private void updateRating() {
         // Achar forma eficiente de atualizar a média
     }
 
