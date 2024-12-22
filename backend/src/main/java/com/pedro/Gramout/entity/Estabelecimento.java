@@ -1,6 +1,6 @@
 package com.pedro.Gramout.entity;
 
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.pedro.Gramout.entity.enums.CategoriaEstabelecimento;
 import com.pedro.Gramout.entity.enums.FiltrosEstabelecimento;
 import jakarta.persistence.*;
@@ -24,7 +24,8 @@ public class Estabelecimento {
     private String about;
     private float rating = 0;
 
-    @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "estabelecimento", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
+    @JsonManagedReference
     private List<EventHappening> eventsHappening;
 
     @Enumerated(EnumType.STRING)
@@ -34,8 +35,12 @@ public class Estabelecimento {
     private String address;
     private String phone;
 
-    @OneToOne(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Galeria galeria;
+    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}) // Adjust cascade as needed
+    @JoinTable(name = "galeria",  // Use "galeria" as the join table name
+            joinColumns = @JoinColumn(name = "estabelecimento_id"),
+            inverseJoinColumns = @JoinColumn(name = "media_id"))
+    private List<Media> galleryMedias = new ArrayList<>();  // Rename to be more descriptive
+
 
     @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Produto> produtos = new ArrayList<>();

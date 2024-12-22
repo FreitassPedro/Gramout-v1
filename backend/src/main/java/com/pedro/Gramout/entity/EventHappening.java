@@ -1,9 +1,15 @@
 package com.pedro.Gramout.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.pedro.Gramout.entity.enums.EventFrequency;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 
 import java.time.LocalDateTime;
 
@@ -16,9 +22,9 @@ public class EventHappening {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "estabelecimento_id")
-    @JsonIgnore
+    @JsonBackReference
     private Estabelecimento estabelecimento;
 
     private String title;

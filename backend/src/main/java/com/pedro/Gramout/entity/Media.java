@@ -2,24 +2,30 @@ package com.pedro.Gramout.entity;
 
 import com.pedro.Gramout.entity.enums.MediaType;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
-@Data
+@Setter
+@Getter
 @Entity
-@Table
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // This is the strategy that will be used to store the data in the database
-@DiscriminatorColumn(name = "media_type") // This is the column that will be used to determine the type of the media
-public  class Media {
+@Table(name = "media")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "media_type")
+public abstract class Media {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     private String url;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "media_type", insertable = false, updatable = false)
-    private MediaType mediaType;
-
+    public MediaType getMediaType() {
+        return switch (this) {
+            case Image image -> MediaType.IMAGE;
+            case Video video -> MediaType.VIDEO;
+            default -> null;
+        };
+    }
 }

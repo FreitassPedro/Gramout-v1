@@ -4,6 +4,7 @@ import com.pedro.Gramout.entity.*;
 import com.pedro.Gramout.entity.enums.CategoriaEstabelecimento;
 import com.pedro.Gramout.entity.enums.EventFrequency;
 import com.pedro.Gramout.entity.enums.FiltrosEstabelecimento;
+import com.pedro.Gramout.entity.enums.MediaType;
 import com.pedro.Gramout.repository.*;
 import com.pedro.Gramout.service.EstabelecimentoService;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.SequencedCollection;
 
 @Slf4j
 @Controller
@@ -36,7 +38,8 @@ public class TestesController {
     private EventHappeningRepository eventHappeningRepository;
 
     @Autowired
-    private GaleriaRepository galeriaRepository;
+    private MediaRepository mediaRepository;
+
     @GetMapping("/criar")
     public void create() {
 
@@ -49,13 +52,13 @@ public class TestesController {
         estabelecimento.setCategory(CategoriaEstabelecimento.RESTAURANTE);
         estabelecimento.setRating(5);
 
+
         List<FiltrosEstabelecimento> filtros = List.of(FiltrosEstabelecimento.BRASILEIRA, FiltrosEstabelecimento.VEGANA);
         estabelecimento.setFiltros(filtros);
         estabelecimentoService.save(estabelecimento);
 
         crairPostTeste();
         criarPostTeste2();
-        criarGaleria();
     }
 
     public void crairPostTeste() {
@@ -83,23 +86,14 @@ public class TestesController {
     }
 
     public void criarPostTeste2() {
-        Estabelecimento estabelecimento = new Estabelecimento();
-                estabelecimento.setName("Estabelecimento 2");
-                estabelecimento.setAbout("Bar novo na cidade, venha conhecer!");
-                estabelecimento.setAddress("Rua 2, 123");
-                estabelecimento.setPhone("+55 99 9876543210");
-                estabelecimento.setProfilePictureUrl("https://example.com/profile2.jpg");
-                estabelecimento.setCategory(CategoriaEstabelecimento.BAR);
-
-
-        estabelecimentoService.save(estabelecimento);
+        Estabelecimento estabelecimento = estabelecimentoService.findById(1);
 
         Publication publication = new Publication();
         publication.setEstabelecimento(estabelecimento);
         publicationRepository.save(publication);
 
         PublicationContent publicationContent = new PublicationContent();
-         publicationContent.setText("Texto do post 2");
+        publicationContent.setText("Texto do post 2");
         publicationContent.setPublication(publication);
 
         publicationContentRepository.save(publicationContent);
@@ -117,26 +111,31 @@ public class TestesController {
         eventHappeningRepository.save(eventHappening);
     }
 
+    @GetMapping("/galeria")
     public void criarGaleria() {
         Estabelecimento estabelecimento = estabelecimentoService.findById(1);
 
-        Galeria galeria = new Galeria();
-        galeria.setEstabelecimento(estabelecimento);
-        Image imagem1 = new Image();
-        imagem1.setUrl("https://example.com/image1.jpg");
-        Image imagem2 = new Image();
-        imagem2.setUrl("https://example.com/image2.jpg");
-        List<Media> imagensGaleria = List.of(imagem1, imagem2);
-        galeria.setImages(imagensGaleria);
+        Image image1 = new Image();
+        image1.setUrl("https://example.com/image1.jpg");
 
-        galeriaRepository.save(galeria);
-        estabelecimentoRepository.saveAndFlush(estabelecimento);
+        estabelecimento.getGalleryMedias().add(image1);
 
+        estabelecimentoRepository.save(estabelecimento);
     }
 
     @GetMapping("/mostrar")
     public ResponseEntity<?> mostrarEstabalecimento() {
         Estabelecimento estabelecimento = estabelecimentoService.findById(1);
         return ResponseEntity.ok(estabelecimento);
+    }
+
+    @GetMapping("/galeriaId1")
+    public ResponseEntity<?> mostrarGaleria() {
+        Estabelecimento estabelecimento = estabelecimentoService.findById(1);
+        SequencedCollection<Media> galleryMedias = estabelecimento.getGalleryMedias();
+        for (Media media : galleryMedias) {
+            log.info("Media: {}", media.getMediaType());
+        }
+        return ResponseEntity.ok(galleryMedias);
     }
 }

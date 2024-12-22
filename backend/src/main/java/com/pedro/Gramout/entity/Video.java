@@ -1,13 +1,10 @@
 package com.pedro.Gramout.entity;
 
-import com.pedro.Gramout.entity.enums.MediaType;
 import jakarta.persistence.DiscriminatorValue;
-import lombok.Data;
+import jakarta.persistence.Entity;
 
-
-@DiscriminatorValue("video")
-@Data
+@Entity
+@DiscriminatorValue("VIDEO")
 public class Video extends  Media{
 
-   private final MediaType mediaType = MediaType.VIDEO;
 }
