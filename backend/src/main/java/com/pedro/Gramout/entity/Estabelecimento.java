@@ -54,6 +54,9 @@ public class Estabelecimento {
     @Column(name = "filtros") // Nome da coluna na tabela estabelecimento_filtros
     private List<FiltrosEstabelecimento> filtros = new ArrayList<>();
 
+    @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BusinessHours> businessHours = new ArrayList<>();
+
     public void addProduto(Produto produto) {
         produtos.add(produto);
     }

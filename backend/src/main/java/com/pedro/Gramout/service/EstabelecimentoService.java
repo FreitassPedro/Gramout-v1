@@ -5,6 +5,7 @@ import com.pedro.Gramout.repository.EstabelecimentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.SequencedCollection;
 
 @Service
@@ -18,7 +19,7 @@ public class EstabelecimentoService {
         estabelecimentoRepository.save(estabelecimento);
     }
 
-    public SequencedCollection<Estabelecimento> findAll() {
+    public List<Estabelecimento> findAll() {
         return estabelecimentoRepository.findAll();
     }
 

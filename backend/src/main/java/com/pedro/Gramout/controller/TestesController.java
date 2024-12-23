@@ -1,7 +1,9 @@
 package com.pedro.Gramout.controller;
 
 import com.pedro.Gramout.entity.*;
+import com.pedro.Gramout.entity.dto.EstabelecimentoDTO;
 import com.pedro.Gramout.entity.enums.CategoriaEstabelecimento;
+import com.pedro.Gramout.entity.enums.DaysOfWeek;
 import com.pedro.Gramout.entity.enums.EventFrequency;
 import com.pedro.Gramout.entity.enums.FiltrosEstabelecimento;
 import com.pedro.Gramout.repository.*;
@@ -11,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.SequencedCollection;
 
@@ -45,8 +49,11 @@ public class TestesController {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private BusinessHoursRepository businessHoursRepository;
+
     @GetMapping("/criar")
-    public void create() {
+    public ResponseEntity<List<Estabelecimento>> create() {
 
         Estabelecimento estabelecimento = new Estabelecimento();
         estabelecimento.setName("Estabelecimento 1");
@@ -62,6 +69,69 @@ public class TestesController {
 
         criarPostPorTeste1();
         criarPostTeste2();
+        criarEstabalecimento2();
+
+        List<Estabelecimento>  estabelecimentos = estabelecimentoService.findAll();
+        return ResponseEntity.ok(estabelecimentos);
+    }
+
+    private void criarEstabalecimento2() {
+        Estabelecimento estabelecimento = new Estabelecimento();
+        estabelecimento.setName("Cafeteria João");
+        estabelecimento.setAddress("Rua das Flores, 11, Centro");
+        estabelecimento.setPhone("+55 99 1234567890");
+        estabelecimento.setProfilePictureUrl("https://example.com/profile.jpg");
+        estabelecimento.setAbout("Cafeteria com café e bolos deliciosos");
+        estabelecimento.setCategory(CategoriaEstabelecimento.CAFETERIA);
+
+        estabelecimento.setFiltros(List.of(FiltrosEstabelecimento.MUSICA_AO_VIVO, FiltrosEstabelecimento.BRASILEIRA));
+        List<BusinessHours> businessHours = createBusinessHoursAndSet();
+
+        for (BusinessHours businessHour : businessHours) {
+            businessHour.setEstabelecimento(estabelecimento);
+        }
+        estabelecimento.setBusinessHours(businessHours);
+        estabelecimentoRepository.save(estabelecimento);
+    }
+
+    private List<BusinessHours> createBusinessHoursAndSet() {
+        BusinessHours monday = new BusinessHours();
+        monday.setDayOfWeek(DaysOfWeek.MONDAY);
+        monday.setOpeningTime(java.time.LocalTime.of(8, 0));
+        monday.setClosingTime(java.time.LocalTime.of(18, 0));
+
+        BusinessHours tuesday = new BusinessHours();
+        tuesday.setDayOfWeek(DaysOfWeek.TUESDAY);
+        tuesday.setOpeningTime(java.time.LocalTime.of(8, 0));
+        tuesday.setClosingTime(java.time.LocalTime.of(18, 0));
+
+        BusinessHours sunday = new BusinessHours();
+        sunday.setDayOfWeek(DaysOfWeek.SUNDAY);
+        sunday.setOpeningTime(java.time.LocalTime.of(10, 0));
+        sunday.setClosingTime(java.time.LocalTime.of(14, 0));
+
+       return List.of(monday, tuesday, sunday);
+    }
+
+    @GetMapping("/businessHours")
+    public void criarBusinessHoursList() {
+        Estabelecimento estabelecimento = estabelecimentoService.findById(1);
+        BusinessHours monday = new BusinessHours();
+        monday.setDayOfWeek(DaysOfWeek.MONDAY);
+        monday.setOpeningTime(java.time.LocalTime.of(8, 0));
+        monday.setClosingTime(java.time.LocalTime.of(18, 0));
+        monday.setEstabelecimento(estabelecimento);
+
+        BusinessHours saturday= new BusinessHours();
+        saturday.setDayOfWeek(DaysOfWeek.SATURDAY);
+        saturday.setOpeningTime(java.time.LocalTime.of(10, 0));
+        saturday.setClosingTime(java.time.LocalTime.of(14, 0));
+        saturday.setEstabelecimento(estabelecimento);
+
+        estabelecimento.getBusinessHours().add(monday);
+        estabelecimento.getBusinessHours().add(saturday);
+
+        estabelecimentoRepository.save(estabelecimento);
     }
 
     public void criarPostPorTeste1() {
@@ -109,10 +179,12 @@ public class TestesController {
         eventHappening.setTitle("Evento de inauguração");
         eventHappening.setDescription("Venha conhecer o novo bar da cidade");
         eventHappening.setStartDate(java.time.LocalDateTime.now());
-        eventHappening.setEndDate(java.time.LocalDateTime.now().plusHours(3));
+        eventHappening.setEndDate(java.time.LocalDateTime.now().plusDays(3));
         eventHappening.setEventFrequency(EventFrequency.NOT_REPEAT);
+        eventHappening.setInterested(0);
         eventHappeningRepository.save(eventHappening);
     }
+
 
     @GetMapping("/galeria")
     public void criarGaleria() {
@@ -197,6 +269,23 @@ public class TestesController {
 
         usuarioRepository.save(usuario);
         return usuario;
+    }
+
+
+    @GetMapping("/findById/{id}")
+    public ResponseEntity<EstabelecimentoDTO> findByIdModelMapper(@PathVariable int id) {
+        long inicio = System.currentTimeMillis();
+
+        Estabelecimento estabelecimento = estabelecimentoService.findById(id);
+        EstabelecimentoDTO estabelecimentoDTO = new EstabelecimentoDTO(
+                estabelecimento.getName(),
+                estabelecimento.getAbout(),
+                estabelecimento.getRating(),
+                estabelecimento.getCategory());
+
+        long fim = System.currentTimeMillis();
+        log.info("Tempo de execução: {} ms", fim - inicio);
+        return ResponseEntity.ok(estabelecimentoDTO);
     }
 
 }

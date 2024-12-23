@@ -7,7 +7,7 @@ import com.pedro.Gramout.repository.ProdutoRepository;
 import com.pedro.Gramout.repository.EstabelecimentoRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 
 import static org.assertj.core.api.Assertions.assertThat;
 

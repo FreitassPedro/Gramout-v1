@@ -10,7 +10,6 @@ return (
   <BrowserRouter>
     <Routes>
       <Route path='/*' element={<HomePage />} />
-      <Route path="/" element={<HomePage />} />
       <Route path='/estabelecimentos' element={<Estabelecimentos />} />
       <Route path="/:estabelecimento" element={<Estabelecimento />} />
     </Routes>
