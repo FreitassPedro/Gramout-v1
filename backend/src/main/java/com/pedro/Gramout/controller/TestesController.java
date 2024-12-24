@@ -52,6 +52,9 @@ public class TestesController {
     @Autowired
     private BusinessHoursRepository businessHoursRepository;
 
+    @Autowired
+    private ReviewMediaRepository reviewMediaRepository;
+
     @GetMapping("/criar")
     public ResponseEntity<List<Estabelecimento>> create() {
 
@@ -242,6 +245,16 @@ public class TestesController {
         review3.setDescription("Comida ruim, atendimento ruim");
         review3.setUserId(usuario);
 
+        Image imgReview1 = new Image();
+        imgReview1.setUrl("https://example.com/imageReview1.jpg");
+        mediaRepository.save(imgReview1); // Save the Media entity first
+
+        ReviewMedia reviewMedia1 = new ReviewMedia();
+        reviewMedia1.setMedia(imgReview1);
+        reviewMedia1.setReview(review1);
+
+        review1.getReviewMedias().add(reviewMedia1);
+
         reviewRepository.save(review1);
         reviewRepository.save(review2);
         reviewRepository.save(review3);
@@ -270,7 +283,6 @@ public class TestesController {
         usuarioRepository.save(usuario);
         return usuario;
     }
-
 
     @GetMapping("/findById/{id}")
     public ResponseEntity<EstabelecimentoDTO> findByIdModelMapper(@PathVariable int id) {

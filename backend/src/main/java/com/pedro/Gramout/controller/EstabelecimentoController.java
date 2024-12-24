@@ -22,7 +22,6 @@ public class EstabelecimentoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> listById(@PathVariable int id) {
-
         return ResponseEntity.ok(estabelecimentoService.findById(id));
     }
 }

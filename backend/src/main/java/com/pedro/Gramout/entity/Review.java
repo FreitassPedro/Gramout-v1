@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -27,6 +29,10 @@ public class Review {
     private int rating;
     private String title;
     private String description;
-    private LocalDateTime reviewDate = LocalDateTime.now();
+
+    @OneToMany(mappedBy = "review", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ReviewMedia> reviewMedias = new ArrayList<>();
+
+    private LocalDateTime createdAt = LocalDateTime.now();
 
 }

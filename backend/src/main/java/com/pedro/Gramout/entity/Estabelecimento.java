@@ -42,6 +42,7 @@ public class Estabelecimento {
     private List<Media> galleryMedias = new ArrayList<>();  // Rename to be more descriptive
 
 
+    // Produtos refere-se a um cardápio 
     @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Produto> produtos = new ArrayList<>();
 
